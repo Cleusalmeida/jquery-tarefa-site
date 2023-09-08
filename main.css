@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+
+.container {
+    max-width: 1024px; /*largura máxima*/
+    width: 100%;
+    margin: 0 auto; /*centralizar na horizontal*/
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /*centralizar na vertical*/
+}
+
+header {
+    padding: 16px 0 0;
+    border-bottom: 2px solid #747171;
+    margin-bottom: 56px; /*espaço entre a linha do cabeçalho e o começo do body*/
+}
+
+.submenu {
+    display: none; /*submenu fica invisível*/
+    border: 1px solid #d71c1c; /*borda da caixinha do submenu*/
+    background-color: #fff; /*cor de fundo da caixinha do menu*/
+    position: absolute; /*faz o elemento do menu parar de se deslocar quando clicado no outro*/
+    left: 0; /*o espaço dos elemetos do submenu não podem ser maior que do menu (ver tamanho no f12)*/
+    width: 300px; /* tamanho da caixinha do submenu*/
+    top: 100%; /*o submenu começar certo na linha pra baixo*/
+}
+
+.menu > li {
+    float: left ; /*faz os elementos do menu ficarem um ao lado do outro*/
+    list-style: none; /*tira o pontinho que significa linha*/
+    padding: 16px; /*espaço entre os elementos do menu em todas as partes*/
+    border-top: 4px solid #747171; /*borda emcima dos elementos do menu (pode ser transparente também*/
+    position: relative; /*o submenu não ultrapassa para dentro do outro*/
+}
+
+.clear {
+    clear: both; /*desgruga os elementos do menu da linha e da espaço para a direita e esquerda*/
+}
+
+.menu li:hover .submenu { /*regras para exibir o submenu*/
+    display: block; /*quando clicado no menu, exibe o submenu*/
+} 
+
+.menu li:hover {
+    border-color: transparent; /*cor que mostra qual elemento do menu do menu está sendo selecionado*/
+}
+
+.submenu li {
+    display: block; /*elementos do submenu, um embaixo do outro*/
+    padding: 8px; /*espaço entre os elementos do menu*/
+}
+
+.conteudo {
+    display: grid; /*trabalhando com colunas e linhas*/
+    grid-template-columns: 70% 30%; /*organiza em colunas e diz a largura das colunas*/
+}
+
+.noticia img {
+    max-width: 100%;
+}
+
+.destaque {
+    margin-bottom: 56px; /*espaço entre a seçao: últimas notícias e a imagem acima*/
+}
+
+.destaque .noticia a {
+    display: flex; /*colocou a descriçao da imagem ao lado da imagem*/
+    font-size: 2em; /*tamanho da fonte do parágrafo da descriçao*/
+}
+
+.destaque .noticia img {
+    margin-right: 8px; /*espaço à direita, entre a imagem e o parágrafo de descrição*/
+}
+
+section h2 {
+    margin-bottom: 32px; /*espaço entre o título da seção e a imagem*/
+} 
+
+aside {  /*barra lateral*/  
+    padding-left: 40px; /*espaço entre a segunda coluna e o texto da primeira*/
+}
+
+aside .noticia {
+    margin-bottom: 24px; /*espaço entre as imagens e os paragrafos da coluna esquerda*/
+}
+
+.noticias {
+    display: grid; /*colunas ou linhas*/
+    grid-template-columns: 32.6% 32.6% 32.6% ; /*pode escrever também: repeat (3,32,6%)*/
+    column-gap: 1%; /*espaço entre as imagens*/
+    row-gap: 5%; /*espaço entre o topo das iamgens e o parágrafo*/
+}
+
+@media screen and (max-width: 767px) {
+    .conteudo {
+        display: block; /*em baixo um do outro*/
+    }
+
+    .container {
+        max-width: 90%; /*ocupar somente 90% do dipositivo*/
+    }
+
+    .destaque .noticia a {
+        display: block; /*colocou a descriçao da imagem ao lado da imagem*/
+        font-size: 1.5em; /*tamanho da fonte do parágrafo da descriçao*/
+    }
+    
+    .destaque .noticia img {
+        margin-right: 0px; /*espaço entre a imagem e o parágrafo de descrição*/
+    }
+
+    .noticias {
+        display: block; /*colunas ou linhas*/
+    }
+
+    .noticias .noticia {
+        margin-bottom: 32px;
+    }
+
+    aside {
+        padding-left: 0; /*espaço à esquerda entre a coluna de imagens e o parágrafo de descrição*/
+    }
+
+    header div.container {
+        flex-direction: column;/*coloca o título e a barra de pesquisa um em baixo de outro, em coluna*/
+    }
+
+    .submenu {
+        display: block; /*deixa o submenu invisível*/
+        width: 100%; /*largura do submenu*/
+        position: relative;
+        border: none;
+    }  
+    
+    .menu {
+        display: none;  /*menu invisível*/
+    }
+
+    .menu > li {
+        clear: both;
+        background-color: #747171;
+    }
+
+    .submenu li {
+        display: block; /*coloca os elementos do submenu em baixo um do outro*/
+        padding: 8px; /*espaçamento entre os submenus*/
+    }
+
+    .botao-menu {
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .botao-menu button {
+        padding: 8px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .botao-menu {
+        display: none; /*deixa o botão invisivel*/
+    }
+
+    .destaque .noticia a {
+        font-size: 1.5em;
+    }
+
+    .noticias {
+        grid-template-columns: repeat(2, 49%);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .botao-menu {
+        display: none;
+    }
+}
+
